@@ -1,0 +1,159 @@
+/* initial css settings */
+html {
+    box-sizing: border-box; 
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0 auto;
+    font-family: Arial;
+}
+
+/* ios base colors */
+.ios-page-background {
+    background: #f7f7f8;
+}
+
+.ios-content-background {
+    background: #efeff4;
+}
+
+.ios-list-background {
+    background: #ffffff;
+}
+
+.ios-footer-background {
+    background: #efeff4;
+}
+
+.ios-darkGray-color {
+    color: #6d6d72;
+}
+
+.ios-lightGray-color {
+    color: #efeff4;
+}
+
+.ios-red-color {
+    color: rgba(255, 59, 48, 1);
+}
+
+.ios-orange-color {
+    color: rgba(255, 149, 0, 1);
+}
+
+.ios-yellow-color {
+    color: rgba(255, 204, 0, 1);
+}
+
+.ios-green-color {
+    color: rgba(76, 217, 100, 1);
+}
+
+.ios-tealBlue-color {
+    color: rgba(90, 200, 250, 1);
+}
+
+.ios-blue-color {
+    color: rgba(0, 122, 255, 1);
+}
+
+.ios-purple-color {
+    color: rgba(88, 86, 214, 1);
+}
+
+.ios-pink-color {
+    color: rgba(255, 45, 85, 1);
+}
+
+/* helper classes */
+.centeredText {
+    text-align: center;
+}
+
+.seperationLine {
+    margin: 0 auto;
+}
+
+.upperCase {
+    text-transform: uppercase;
+}
+
+/* Header */
+#header{
+    letter-spacing: 4px;
+    color: rgba(0, 122, 255, 1);
+}
+
+/* Main */
+#main {
+    height: 80vh;
+    padding: 10%;
+}
+#main ul {
+    padding: 0;
+}
+#main li {
+    font-size: 1.2rem;
+    padding: 1rem;
+    list-style: none;
+    border-bottom: 1px solid #c8c7cc;
+    display: block;
+    position: relative;
+}
+
+.inputContainer {
+    display: flex;
+}
+
+#userInput{
+    font-size: 1rem;
+    padding: 1rem;
+    width: 75%;
+}
+
+.addBtn {
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1rem;
+    width: 25%;
+    text-align: center;
+    background-color: rgba(0, 122, 255, 1);
+    color: white;
+}
+.addBtn:hover {
+    background-color: #808080;
+    color: white;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1rem;
+}
+.close:hover {
+    color: rgba(255, 59, 48, 1);
+}
+
+.done {
+    text-decoration: line-through;
+    color: #6d6d72;
+    background-color: #fafafa;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+footer a {
+    text-decoration: none;
+    color: rgba(0, 122, 255, 1);
+}
