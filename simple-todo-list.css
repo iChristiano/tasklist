@@ -84,16 +84,17 @@ body {
 /* Header */
 #header{
     letter-spacing: 4px;
-    color: rgba(0, 122, 255, 1);
+    font-size: 0.8rem;
 }
 
 /* Main */
 #main {
-    height: 80vh;
+    min-height: 80vh;
     padding: 10%;
 }
 #main ul {
     padding: 0;
+    box-shadow: 2px 2px #c8c7cc;
 }
 #main li {
     font-size: 1.2rem;
@@ -122,6 +123,7 @@ body {
     text-align: center;
     background-color: rgba(0, 122, 255, 1);
     color: white;
+    margin: 1px;
 }
 .addBtn:hover {
     background-color: #808080;
@@ -135,14 +137,14 @@ body {
     top: 0;
     padding: 1rem;
 }
-.close:hover {
+.close:active {
     color: rgba(255, 59, 48, 1);
 }
 
 .done {
     text-decoration: line-through;
-    color: #6d6d72;
-    background-color: #fafafa;
+    color: #c8c7cc;
+    background-color: #f7f7f8;;
 }
 
 
