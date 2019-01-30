@@ -108,6 +108,7 @@ body {
 
 .inputContainer {
     display: flex;
+    flex-wrap: wrap;
 }
 
 #userInput{
@@ -125,12 +126,21 @@ body {
     text-align: center;
     background-color: rgba(0, 122, 255, 1);
     color: white;
-    margin: 1px;
+    margin: 0px;
     border-radius: 0px;
 }
 .addBtn:active {
     background-color: #808080;
     color: white;
+}
+
+.clearBtn {
+    cursor: pointer;
+    color: rgba(0, 122, 255, 1);
+
+}
+.clearBtn:active {
+    color: rgba(255, 59, 48, 1);
 }
 
 .close {
@@ -148,6 +158,10 @@ body {
     text-decoration: line-through;
     color: #c8c7cc;
     background-color: #f7f7f8;;
+}
+
+.hide {
+    display: none;
 }
 
 

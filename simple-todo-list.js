@@ -1,27 +1,9 @@
 'use strict';
 
-var button = document.getElementById("addBtn"),
-    input = document.getElementById("userInput"),
-	ul = document.querySelector("ul");
-
-
-	var data = JSON.stringify([{
-					id: 123,
-					name: 'Monday is gym day',
-					state: true
-				},
-				{
-					id: 124,
-					name: 'Thuesday as well',
-					state: true
-				}
-			]);
-
-
-	    // set default test data 
-		(function setDefaultUsers(){
-			localStorage.setItem("listElements", data);
-		})();
+var button = document.getElementById('addBtn'),
+	clearButton = document.getElementById('clearBtn'),
+    input = document.getElementById('userInput'),
+	ul = document.querySelector('ul');
 
 // input verification
 function inputLength() {
@@ -31,9 +13,9 @@ function inputLength() {
 // create delete button for items
 function createDeleteBtn(listItem){
 	var delBtn = document.createElement('span');
-    delBtn.appendChild(document.createTextNode("x"));
-    delBtn.classList.add("close");
-	delBtn.addEventListener("click", removeItem);
+    delBtn.appendChild(document.createTextNode('x'));
+    delBtn.classList.add('close');
+	delBtn.addEventListener('click', removeItem);
 	listItem.appendChild(delBtn);
 }
 
@@ -44,29 +26,38 @@ function removeItem(event){
 	removeLocalStorageElement('listElements', itemId);
     li.removeEventListener('click', toggleCssClass);
 	ul.removeChild(li);
+	if (ul.children.length < 1) {
+		document.querySelector('#clearBtn').classList.add('hide');
+	}
 }
 
 // create list entry element
 function createListElement(newEntry) {
 
-    var span = document.createElement("span");
+    var span = document.createElement('span');
 	span.appendChild(document.createTextNode(newEntry.name));
 	
-    var li = document.createElement("li");
+    var li = document.createElement('li');
 	li.appendChild(span);
 	li.setAttribute('id', newEntry.id);
+
+	if (newEntry.state === false) {
+		li.classList.add('done');
+	}
     
     li.addEventListener('click', toggleCssClass);
     
     createDeleteBtn(li);
 
 	ul.appendChild(li);
-	input.value = "";
+	input.value = '';
+
+	document.querySelector('#clearBtn').classList.remove('hide');
 }
 
 // append list element to local storage
 function appendToLocalStorage(key, newData) {
-	var data = JSON.parse(localStorage.getItem(key));
+	var data = JSON.parse(localStorage.getItem(key)) || [];
 	data.push(newData);
 	localStorage.setItem(key, JSON.stringify(data));
 }
@@ -81,7 +72,25 @@ function removeLocalStorageElement(key, itemId) {
 }
 
 // update item
-// ...................
+function updateLocalStorageElement(key, itemId) {
+	var data = JSON.parse(localStorage.getItem(key)),
+		newData = data.map(function (value) {
+			if (value.id === itemId) {
+				value.state = !value.state;
+			}
+			return value;
+		});
+	localStorage.setItem(key, JSON.stringify(newData));
+}
+
+// remove list
+function clearLocalStorageElement(key) {
+	if (confirm('Remove all entries?')) {
+		localStorage.removeItem(key);
+		document.querySelector('ul').innerHTML = '';
+		document.querySelector('#clearBtn').classList.add('hide');
+	}
+}
 
 // add item to list
 function addListAfterClick() {
@@ -109,15 +118,14 @@ function addListAfterKeypress(event) {
 
 // toggle done class
 function toggleCssClass(event) {
-
-	// update item
-	// ................... .add("mystyle"); // remove()
-
 	if (event.target.nodeName === 'LI') {
 		event.target.classList.toggle('done');
 	} else {
 		event.target.parentNode.classList.toggle('done');
 	}	
+
+	var elementId = parseInt(event.target.getAttribute('id'),10);
+	updateLocalStorageElement('listElements', elementId);
 }
 
 // read all values available in local storage and create list entries
@@ -131,8 +139,13 @@ function drawListElementsLocalStore() {
 	}
 }
 
-drawListElementsLocalStore();
-
 // add event listeners to button/input
-button.addEventListener("click", addListAfterClick);
-input.addEventListener("keypress", addListAfterKeypress);
+button.addEventListener('click', addListAfterClick);
+//clearButton.addEventListener('click', function(){clearLocalStorageElement('listElements');});
+clearButton.addEventListener('click', clearLocalStorageElement.bind(this,'listElements'));
+
+input.addEventListener('keypress', addListAfterKeypress);
+
+document.addEventListener('DOMContentLoaded', function() { 
+	drawListElementsLocalStore();
+});
