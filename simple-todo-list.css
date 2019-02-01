@@ -85,12 +85,13 @@ body {
 #header{
     letter-spacing: 4px;
     font-size: 0.7rem;
+    font-weight: bold;
 }
 
 /* Main */
 #main {
     min-height: 80vh;
-    padding: 10%;
+    padding: 20%;
 }
 #main ul {
     padding: 0;
@@ -174,4 +175,12 @@ footer {
 footer a {
     text-decoration: none;
     color: rgba(0, 122, 255, 1);
+}
+
+/* Mobile */
+@media screen and (max-width: 500px) {
+    /* Main */
+    #main {
+        padding: 5%;
+    }
 }
