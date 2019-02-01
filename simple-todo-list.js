@@ -128,7 +128,7 @@ function removeList() {
 
 // read all values available in local storage and create list entries
 function drawListElementsFromLocalStore(data) {
-	if (data !== null) {
+	if (data !== null && data.length !== 0) {
 		// create li entries 
 		data.forEach(entry => {
 			renderListItem(entry);
