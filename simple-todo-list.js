@@ -177,14 +177,15 @@ function addListAfterKeypress(event) {
 
 // toggle done class
 function toggleCssClass(event) {
-	let elementId = parseInt(event.target.getAttribute('id'),10);
-	updateLocalStorageElement('listElements', elementId);
-
+	let elementId;
 	if (event.target.nodeName === 'LI') {
 		event.target.classList.toggle('done');
+		elementId = parseInt(event.target.getAttribute('id'),10);
 	} else {
 		event.target.parentNode.classList.toggle('done');
+		elementId = parseInt(event.target.parentNode.getAttribute('id'),10);
 	}
+	updateLocalStorageElement('listElements', elementId);
 }
 
 // reload list from local storage on page changes
