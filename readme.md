@@ -1,5 +1,5 @@
 ﻿# Simple-ToDo-List
-Just a simple HTML, CSS and JS todo-list implementation.
+Just a simple HTML, CSS and JS todo-list implementation using localstorage to temporaty persist data.
 
 ---
 
@@ -9,4 +9,3 @@ Just a simple HTML, CSS and JS todo-list implementation.
 * Remove items
 * Mark items as done
 
-> No data storage functionality provided!
